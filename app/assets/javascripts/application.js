@@ -15,4 +15,5 @@
 //= require bootstrap-modal
 //= require jquery.mCustomScrollbar
 //= require jquery.mousewheel
+//= require shared/global
 //= require_tree .
