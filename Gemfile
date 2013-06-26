@@ -60,7 +60,8 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'capistrano-unicorn'
-  gem 'rvm-capistrano'
+  gem 'rvm-capistrano', github: 'wayneeseguin/rvm-capistrano'
+  gem 'capistrano-helpers'
 
   gem 'better_errors'
   gem 'binding_of_caller'
