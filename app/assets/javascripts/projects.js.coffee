@@ -10,7 +10,6 @@ $(document).ready ->
     $.ajax "/projects/#{id}",
       method: 'get'
     .done (data) ->
-      console.log(data)
       $('body').append JST["templates/projects/show"]({project: data})
 
       $("#project-body").css("height", $(window).height() - 250 + "px").mCustomScrollbar()
