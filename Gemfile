@@ -73,7 +73,7 @@ group :development do
   gem 'pry-rails', require: false
   gem 'brakeman', require: false
   #refactoring
-  gem 'rails_best_practices', require: false
+  gem 'rails_best_practices', github: 'railsbp/rails_best_practices', require: false
 end
 
 group :development, :test do
