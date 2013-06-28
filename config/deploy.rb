@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 require 'capistrano-helpers/migrations'
-require 'capistrano-helpers/shared'
+#require 'capistrano-helpers/shared'
 require 'capistrano-helpers/privates'
 
 set :stages, %w(production staging)
@@ -25,16 +25,16 @@ set :rvm_autolibs_flag, "readonly"
 before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
 
+after 'deploy:restart', 'unicorn:restart'  # app preloaded
+
 require "rvm/capistrano"
+require 'capistrano-unicorn'
 
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
-require 'capistrano-unicorn'
-
 Dir.glob('config/deploy/shared/*.rb').each{ |file| load file }
 
-#place your database.yml to #{shared_path}/private/config
 set :privates, %w{
   config/database.yml
 }
