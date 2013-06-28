@@ -17,3 +17,5 @@
 //= require jquery.mousewheel
 //= require shared/global
 //= require_tree .
+//= require i18n
+//= require i18n/translations

@@ -7,7 +7,7 @@ $(document).ready ->
   isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
   $(".portfolio-link").on "click", (event) ->
     id = $(this).parent().data().id
-    $.ajax "/projects/#{id}",
+    $.ajax "#{I18n.t('js.project_prefix')}/projects/#{id}",
       method: 'get'
     .done (data) ->
       $('body').append JST["templates/projects/show"]({project: data})

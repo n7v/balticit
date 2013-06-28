@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620110932) do
+ActiveRecord::Schema.define(:version => 20130626083426) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -62,10 +62,20 @@ ActiveRecord::Schema.define(:version => 20130620110932) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
-  create_table "pages", :force => true do |t|
-    t.string   "name"
-    t.string   "slug"
+  create_table "page_translations", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "locale"
     t.text     "content"
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "page_translations", ["locale"], :name => "index_page_translations_on_locale"
+  add_index "page_translations", ["page_id"], :name => "index_page_translations_on_page_id"
+
+  create_table "pages", :force => true do |t|
+    t.string   "slug"
     t.boolean  "hidden",     :default => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
@@ -77,10 +87,20 @@ ActiveRecord::Schema.define(:version => 20130620110932) do
   add_index "pages", ["seo_id"], :name => "index_pages_on_seo_id"
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
-  create_table "projects", :force => true do |t|
-    t.string   "name"
+  create_table "project_translations", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "locale"
     t.text     "content"
-    t.text     "intro"
+    t.string   "name"
+    t.string   "intro"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "project_translations", ["locale"], :name => "index_project_translations_on_locale"
+  add_index "project_translations", ["project_id"], :name => "index_project_translations_on_project_id"
+
+  create_table "projects", :force => true do |t|
     t.string   "preview_image"
     t.string   "preview_background"
     t.string   "background"
@@ -88,12 +108,22 @@ ActiveRecord::Schema.define(:version => 20130620110932) do
     t.datetime "updated_at",         :null => false
   end
 
-  create_table "seos", :force => true do |t|
+  create_table "seo_translations", :force => true do |t|
+    t.integer  "seo_id"
+    t.string   "locale"
     t.string   "title"
     t.string   "keywords"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  add_index "seo_translations", ["locale"], :name => "index_seo_translations_on_locale"
+  add_index "seo_translations", ["seo_id"], :name => "index_seo_translations_on_seo_id"
+
+  create_table "seos", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
