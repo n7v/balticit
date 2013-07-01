@@ -10,22 +10,22 @@ namespace :db do
     end
 
     desc "Create mysql user"
-    task :create_user do
+    task :create_user, :roles => :db do
       mysql_root_sql "CREATE USER '#{mysql_db_user}'@'localhost' IDENTIFIED BY '#{mysql_db_user_password}'"
     end
 
     desc "Grant privileges to user on database"
-    task :grant_privileges do
+    task :grant_privileges, :roles => :db do
       mysql_root_sql "GRANT ALL PRIVILEGES ON #{mysql_db_name}.* TO '#{mysql_db_user}'@'localhost' IDENTIFIED BY '#{mysql_db_user_password}' WITH GRANT OPTION"
     end
 
     desc "Create mysql database"
-    task :create_database do
+    task :create_database, :roles => :db do
       mysql_root_sql "CREATE DATABASE IF NOT EXISTS #{mysql_db_name}"
     end
 
     desc "Create database.yml in shared path"
-    task :create_config do
+    task :create_config, :roles => :db do
       db_config = <<-EOF
       base: &base
         adapter: mysql2
@@ -44,7 +44,7 @@ namespace :db do
       put db_config, "#{shared_path}/private/config/database.yml"
     end
 
-   task :setup do
+   task :setup, :roles => :db do
      create_config
      create_user
      create_database
