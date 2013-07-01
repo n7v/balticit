@@ -1,0 +1,103 @@
+#coding: utf-8
+
+Page.create!(slug: 'index').translations.create!([
+  { 
+    locale: 'ru',
+    name: 'Проекты',
+    content:
+      '<div id="btop-container" class="btop-container-height">
+         <div class="span4 btop-first">
+           Разрабатываем прототип на основе вашей идеи, продумываем
+           сценарии пользовательского взаимодействия и делаем удобный
+           дизайн интерфейса для различных типов устройств.
+         </div>
+         <div class="span4 btop-second">
+           Делаем сложные сайты и веб-сервисы с адаптивной версткой на
+           PHP, Ruby on Rails, Java, HTML5. Разрабатываем приложения для
+           Facebook, Vkontakte, Foursquare, Twitter и тд.
+         </div>
+         <div class="span4 btop-third">
+           <p class="btop-third-vertical">
+             <a class="btop-third-link" href="#">Наши<br>вакансии</a>
+             <a class="btop-third-link" href="#">Скачать<br>презентацию</a>
+           </p>
+         </div>
+       </div>'
+  },
+  {
+    locale: 'en',
+    name: 'Projects',
+    content:
+      '<div id="btop-container" class="btop-container-height">
+         <div class="span4 btop-first">
+           Developing a prototype based on your idea, think through scenarios of
+           user interaction and interface design makes it convenient for
+           different types of devices.
+         </div>
+         <div class="span4 btop-second">
+           We make complex websites and web services with adaptive layout for
+           PHP, Ruby on Rails, Java, HTML5. Develop applications for Facebook,
+           Vkontakte, Foursquare, Twitter and more.
+         </div>
+         <div class="span4 btop-third">
+           <p class="btop-third-vertical">
+             <a class="btop-third-link" href="#">Our jobs</a>
+             <a class="btop-third-link" href="#">Download<br>presentation</a>
+           </p>
+         </div>
+       </div>'
+  }
+])
+
+Page.create!(slug: 'contacts').translations.create!([
+  {
+    locale: 'ru',
+    name: 'Контакты',
+    content:
+      '<table class="contacts-table">
+         <tbody>
+           <tr>
+             <td>
+               <p>г. Москва, Центр дизайна ArtPlay, Нижняя Сыромятническая, 10,
+                  корп. 7, оф. 1<br /><br />+7 495 66 93 099
+               </p>
+               <a class="content-contacts-mail" href="mailto:contact@balticit.ru">
+                 contact@balticit.ru
+               </a>
+             </td>
+             <td>
+               <p>г. Калининград, ул. Согласия 30а<br /><br />+7 4012 909 040</p>
+               <a class="content-contacts-mail" href="mailto:contact@balticit.ru">
+                 contact@balticit.ru
+               </a>
+             </td>
+             <td>&nbsp;</td>
+           </tr>
+         </tbody>
+       </table>'
+  },
+  {
+    locale: 'en',
+      name: 'Contacts',
+      content:
+        '<table class="contacts-table">
+           <tbody>
+             <tr>
+               <td>
+                 <p>Moscow, ArtPlay<br /><br />+7 495 66 93 099</p>
+                 <a class="content-contacts-mail" href="mailto:contact@balticit.ru">
+                   contact@balticit.ru
+                 </a>
+               </td>
+               <td>
+                 <p>Kaliningrad, Soglasiya st. 30а<br /><br />+7 4012 909 040</p>
+                 <a class="content-contacts-mail" href="mailto:contact@balticit.ru">
+                   contact@balticit.ru
+                 </a>
+               </td>
+               <td>&nbsp;</td>
+             </tr>
+           </tbody>
+        </table>'
+  }
+])
