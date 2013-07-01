@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'mysql2'
 
-gem 'activeadmin',   '~> 0.6.0'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'friendly_id'
