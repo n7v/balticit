@@ -27,6 +27,8 @@ before 'deploy:setup', 'rvm:install_ruby'
 
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
 
+after "deploy:update_code", "deploy:migrate"
+
 require "rvm/capistrano"
 require 'capistrano-unicorn'
 
