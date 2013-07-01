@@ -7,13 +7,11 @@ class CreatePageTranslations < ActiveRecord::Migration
       {content: :text, name: :text},
       {:migrate_data => true}
     )
-    Page.create!(:slug => "index")
   end
 
   def down
     add_column :pages, :content, :text
     add_column :pages, :name, :string
     Page.drop_translation_table!
-    Page.delete_all(:slug => "index")
   end
 end
