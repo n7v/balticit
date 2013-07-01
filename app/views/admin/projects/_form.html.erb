@@ -1,0 +1,33 @@
+<%= semantic_form_for [:admin, resource], html:{ multipart:true } do |f| %>
+  <%= f.inputs 'Основное' do %>
+    <li class="input optional overflow">
+      <%= f.label :preview_image, 'Изображение для портфолио' %>
+      <%= image_tag resource.preview_image.thumb_admin, class:'preview_image_float' if resource.preview_image? %>
+      <%= f.file_field :preview_image %><br>
+      <%=raw "<label class='preview_image_delete'> #{f.check_box :remove_preview_image} удалить изображение</label>" if resource.preview_image? %>
+    </li>
+
+    <li class="input optional overflow">
+      <%= f.label :background, 'Фоновое изображение для попапа' %>
+      <%= image_tag resource.background.thumb_admin, class:'preview_image_float' if resource.background? %>
+      <%= f.file_field :background %><br>
+      <%=raw "<label class='preview_image_delete'> #{f.check_box :remove_background} удалить изображение</label>" if resource.background? %>
+    </li>
+    <%= f.input :preview_background, label:'Фоновый цвет при ховере' %>
+  <% end %>
+
+  <div class="globalize-inputs globalize-project">
+    <%= f.globalize_inputs :translations do |lf| %>
+      <%= lf.inputs do %>
+        <%= lf.input :name, input_html: {rows:1}, label:'Заголовок проекта' %>
+        <%= lf.input :intro, input_html: {rows:3}, label:'Вводный текст' %>
+        <%= lf.input :content, label:'Контент' , as: :ckeditor %>
+
+        <%= lf.input :locale, :as => :hidden %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.actions %>
+<% end %>
+
