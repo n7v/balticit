@@ -3,7 +3,7 @@ namespace :db do
     set(:mysql_root_password){ Capistrano::CLI.password_prompt("MySQL root password: ") }
     set(:mysql_db_user_password){ SecureRandom.base64 }
     set :mysql_db_name, "#{application}_#{rails_env}"
-    set :mysql_db_user, "#{application}_#{rails_env}"
+    set :mysql_db_user, "#{application}_#{rails_env}"[0..15] #max 16 symbols for name in MySQL
 
     def mysql_root_sql(query)
       run "mysql --user=root --password=#{mysql_root_password} -e \"#{query}\""
