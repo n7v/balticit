@@ -27,7 +27,12 @@ before 'deploy:setup', 'rvm:install_ruby'
 
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
 
-require "rvm/capistrano"
+after 'deploy:restart', 'nginx:update_site_config'
+after 'nginx:update_site_config', 'nginx:reload'
+
+after 'deploy:restart', 'deploy:cleanup' #remove old releases
+
+require 'rvm/capistrano'
 require 'capistrano-unicorn'
 
 ssh_options[:forward_agent] = true
