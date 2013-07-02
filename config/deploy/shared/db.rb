@@ -66,4 +66,23 @@ namespace :db do
     %x(#{run_str})
   end
 
+  desc "Clone production database to current"
+  task :clone_production, :roles => :app do
+    if rails_env == 'production'
+      raise Capistrano::Error, "can't clone production to production"
+    end
+
+    cur_path = "#{shared_path}/private/config"
+    cur = capture("cat #{cur_path}/database.yml")
+    cur = YAML.load(cur)[rails_env]
+    raise Capistrano::Error, "database env for #{rails_env} not found" if cur.nil? or cur.empty?
+
+    prod_path = "#{base_directory}/#{application}_production/shared/private/config"
+    prod = capture("cat #{prod_path}/database.yml")
+    prod = YAML.load(prod)['production']
+    raise Capistrano::Error, "database env for production not found" if prod.nil? or prod.empty?
+
+    run "/usr/bin/mysqldump -u#{prod['username']} -p#{prod['password']} #{prod['database']} | " \
+        "mysql -u#{cur['username']} -p#{cur['password']} #{cur['username']}"
+  end
 end
