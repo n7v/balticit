@@ -2,8 +2,8 @@ namespace :db do
   namespace :mysql do
     set(:mysql_root_password){ Capistrano::CLI.password_prompt("MySQL root password: ") }
     set(:mysql_db_user_password){ SecureRandom.base64 }
-    set :mysql_db_name, "#{application}_#{rails_env}"
-    set :mysql_db_user, "#{application}_#{rails_env}"
+    set(:mysql_db_name){ "#{application}_#{rails_env}" }
+    set(:mysql_db_user) { "#{application}_#{rails_env}" }
 
     def mysql_root_sql(query)
       run "mysql --user=root --password=#{mysql_root_password} -e \"#{query}\""
@@ -26,20 +26,20 @@ namespace :db do
 
     desc "Create database.yml in shared path"
     task :create_config, :roles => :db do
-      db_config = <<-EOF
-      base: &base
-        adapter: mysql2
-        encoding: utf8
-        reconnect: false
-        pool: 5
-        username: #{mysql_db_user}
-        password: #{mysql_db_user_password}
+      db_config =
+<<-EOF
+base: &base
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  username: #{mysql_db_user}
+  password: #{mysql_db_user_password}
 
-      #{rails_env}:
-        database: #{application}_#{rails_env}
-        <<: *base
-      EOF
-
+#{rails_env}:
+  database: #{application}_#{rails_env}
+  <<: *base
+EOF
       run "mkdir -p #{shared_path}/private/config"
       put db_config, "#{shared_path}/private/config/database.yml"
     end
