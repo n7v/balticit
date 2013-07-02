@@ -2,6 +2,7 @@ namespace :nginx do
   desc "update site config"
   task :update_site_config, :roles => :app do
     local_conf = "#{latest_release}/config/nginx/#{stage}.conf"
+    raise Capistrano::Error, "not found nginx config at #{local_conf}" unless File.exists?(local_conf)
     nginx_avail_site_conf = "/etc/nginx/sites-available/#{application}_#{stage}.conf"
     nginx_enabled_site_conf = "/etc/nginx/sites-enabled/#{application}_#{stage}.conf"
     run "sudo cp -f #{local_conf} #{nginx_avail_site_conf}"
