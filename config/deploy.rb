@@ -1,5 +1,5 @@
 require 'bundler/capistrano'
-require 'capistrano-helpers/migrations'
+#require 'capistrano-helpers/migrations'
 #require 'capistrano-helpers/shared'
 require 'capistrano-helpers/privates'
 
@@ -21,6 +21,8 @@ set :rvm_type, :system
 set :rvm_ruby_string, "ruby-2.0.0-head"
 set :rvm_install_with_sudo, true
 set :rvm_autolibs_flag, "readonly"
+
+set :base_directory, '/var/www/apps'
 
 before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
