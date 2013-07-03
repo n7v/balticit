@@ -1,0 +1,8 @@
+Description:
+    Unicorn config generator
+
+Example:
+    rails generate unicorn:config staging
+
+    This will create:
+        config/unicorn/staging.rb
