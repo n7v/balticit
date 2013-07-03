@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
        @menu.push(p) unless (p == page.root)
       end
     @menu.push(page.siblings.where(hidden: false)) if page.sibling_ids 
-    end
+   end
     @menu.push(page.children.where(hidden: false)) if page.child_ids 
-  end 
+    end 
 end

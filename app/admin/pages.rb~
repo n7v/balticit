@@ -22,6 +22,7 @@ ActiveAdmin.register Page do
     column 'Заголовок', :name
     column 'Псевдоним',:slug, sortable:false
     column 'Меню-родитель', :parent
+    end 
     column "Скрытый", :hidden do |resource|
       resource.hidden? ? 'Да' : 'Нет'
     end

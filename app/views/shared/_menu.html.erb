@@ -1,0 +1,18 @@
+<% @menu.each do |pages| %>
+   <div >
+   <ul>
+  	<% pages.each do |page| %>
+    	<% if page[:slug] == 'index' %>
+        <li>
+          <%= link_to content_tag(:span, page[:name]), root_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to content_tag(:span, page[:name]), slug_path(:slug => page[:slug]) %>
+        </li>
+      <% end %>
+		<% end %>
+  </ul>
+  </div>
+<% end %>
+</nav>
