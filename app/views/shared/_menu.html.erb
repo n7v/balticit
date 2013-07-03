@@ -1,0 +1,42 @@
+<nav class="header-menu">
+  <div>
+    <ul>
+			<% @top_menu.each do |page| %>
+		    <li>
+		      <%= link_to content_tag(:span, page[:name]), slug_path(:slug => page[:slug]) %>
+		    </li>
+		  <% end %>
+    </ul>
+  </div>
+
+  <% unless (@page == @page.root)  %>
+    <div>
+      <ul>
+  	    <% @middle_menu.each do |page| %>
+          <% unless (page == @page.root) || (page == @page) %>
+            <li>
+              <%= link_to content_tag(:span, page[:name]), slug_path(:slug => page[:slug]) %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    <div >
+		  <ul>
+			  <% @main_menu.each do |page| %>
+		      <li>
+		        <%= link_to content_tag(:span, page[:name]), slug_path(:slug => page[:slug]) %>
+		      </li>
+		    <% end %>
+      </ul>
+    <% end %>
+   
+    <div>
+      <ul>
+  	    <% @bottom_menu.each do |page| %>
+          <li>
+            <%= link_to content_tag(:span, page[:name]), slug_path(:slug => page[:slug]) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+</nav>

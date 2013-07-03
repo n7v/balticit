@@ -1,6 +1,7 @@
 class Page < ActiveRecord::Base
-  attr_accessible :slug, :hidden, :seo_id, :seo_attributes, :layout, :translations_attributes, :translations
+  attr_accessible :slug, :hidden, :seo_id, :seo_attributes, :layout, :translations_attributes, :translations, :parent_id
   belongs_to :seo
+  has_ancestry
 
   accepts_nested_attributes_for :seo, :allow_destroy => true, :reject_if => :all_blank
   validates :slug, presence: true, uniqueness: true

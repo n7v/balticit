@@ -78,6 +78,8 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.5)
+    ancestry (2.0.0)
+      activerecord (>= 3.0.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
@@ -425,6 +427,7 @@ DEPENDENCIES
   ActiveAdmin-Globalize3-inputs
   action_mailer_cache_delivery
   activeadmin!
+  ancestry
   better_errors
   binding_of_caller
   bootstrap-sass

@@ -4,6 +4,7 @@
   <%= f.inputs "Основное" do %>
     <%= f.input :slug, label:'Псевдоним для seo' %>
     <%= f.input :hidden, label:"Скрыть пункт меню" %>
+    <%= f.input :parent_id, :as => :select, :collection => Hash[Page.all.map{|page| ["#{page.name}-#{page.id}",page.id]}], label:"Меню-родитель" %>
     <li class="input optional overflow">
       <%= f.label :preview_image, 'Шаблон для страницы' %>
       <%= f.collection_select :layout, layouts, :to_s, :to_s, :prompt => "Select a Country" %>
