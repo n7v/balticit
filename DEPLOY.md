@@ -13,13 +13,17 @@
 * ставим stage-сервер для ролей
 
 ### Установка структуры директорий на сервере
-`cap production deploy:setup`
-`cap staging deploy:setup`
+```bash
+cap production deploy:setup
+cap staging deploy:setup
+```
 
 ### Настройка базы данных на сервере
-`cap production db:mysql:setup`
-`cap staging db:mysql:setup`
-(для выполнения команды потребуется пароль от рута MySQL)
+```bash
+cap production db:mysql:setup
+cap staging db:mysql:setup
+```
+(для выполнения команд потребуется пароль от рута MySQL)
 * создастся `database.yml` в приватной директории на сервере со случайным паролем
 * создастся новый пользователь для проекта (%application%_%stage%)
 * создастся начальная база для проекта
@@ -39,5 +43,7 @@ rails g unicorn:config staging
 созданные конфиги отправить в git-репозиторий
 
 ### Деплой
-`cap production deploy`
-`cap staging deploy`
+```bash
+cap production deploy
+cap staging deploy
+```
