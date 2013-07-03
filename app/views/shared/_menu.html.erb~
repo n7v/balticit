@@ -1,3 +1,4 @@
+<nav class="header-menu">
 <% @menu.each do |pages| %>
    <div >
    <ul>

@@ -30,6 +30,7 @@ Gemfile.lock
 /spec/tmp/*
 **.orig
 rerun.txt
+*~
 pickle-email-*.html
 .project
 /nbproject/private/
