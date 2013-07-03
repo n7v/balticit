@@ -322,6 +322,9 @@ GEM
     ref (1.0.5)
     responders (0.9.3)
       railties (~> 3.1)
+    roboto (0.1.0)
+      actionpack (>= 3.0.0)
+      rails (>= 3.1.0)
     route_translator (3.1.0)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
@@ -461,6 +464,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (= 3.2.13)
   rails_best_practices!
+  roboto
   route_translator
   rspec-rails
   russian
