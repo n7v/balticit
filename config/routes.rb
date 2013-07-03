@@ -1,5 +1,7 @@
 Balticit::Application.routes.draw do
 
+  mount_roboto
+
   root :to => "pages#show", :slug => 'index', locale:'en'
 
   mount Ckeditor::Engine => '/ckeditor'

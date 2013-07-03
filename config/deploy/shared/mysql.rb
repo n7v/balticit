@@ -44,12 +44,12 @@ EOF
       put db_config, "#{shared_path}/private/config/database.yml"
     end
 
-   task :setup, :roles => :db do
-     create_config
-     create_user
-     create_database
-     grant_privileges
-   end
+    task :setup, :roles => :db do
+      create_config
+      create_user
+      create_database
+      grant_privileges
+    end
 
   end
 end

@@ -40,6 +40,8 @@ gem 'unicorn'
 gem 'whenever'
 gem 'exception_notification'
 
+gem 'roboto'
+
 group :test do
   gem 'rspec-rails'
 
