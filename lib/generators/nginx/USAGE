@@ -1,0 +1,8 @@
+Description:
+    Nginx site config generator for use as proxy for Unicorn
+
+Example:
+    rails generate nginx:config staging
+
+    This will create:
+        config/nginx/staging.conf

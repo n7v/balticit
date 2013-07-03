@@ -1,0 +1,38 @@
+upstream <%= name %>.conf {
+    server unix:/var/www/apps/<%= name %>/shared/pids/unicorn.sock fail_timeout=0;
+}
+
+server {
+    listen       80;
+    server_name  <%= server_name %>
+    charset utf-8;
+    root /var/www/apps/<%= name %>/current/public;
+    client_max_body_size 10M;
+
+    location ~ ^/assets|system/.*-(.*)\..* {
+        gzip_static on;
+        expires max;
+        add_header ETag $1;
+        add_header Cache-Control public;
+        break;
+    }
+
+    location / {
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host              $http_host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_redirect off;
+
+
+        if (!-f $request_filename) {
+            proxy_pass http://<%= name %>.conf;
+            break;
+        }
+    }
+
+    error_page 500 502 503 504 /500.html;
+    location = /500.html {
+        root /var/www/apps/<%= name %>/current/public;
+    }
+}
