@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-layout :layout
-before_filter :menu_main 
+  layout :layout
+  before_filter :menu_main
 
   def show
     @projects = Project.all
