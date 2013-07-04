@@ -3,9 +3,9 @@
 puts "Seeding..."
 
 Dir.glob(Rails.root.join("db", "seeds", "*.rb")).each do |file|
-  print "#{file} ... "
+  print "-> #{file} ... "
   load file
   puts "ok"
 end
 
-puts "Done."
+puts "Done"

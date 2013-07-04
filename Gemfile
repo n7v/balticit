@@ -89,4 +89,4 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
-# gem 'rename' | For rename project with one comand "rails g rename:app_to New-Name"
+gem 'rename' # For rename project with one comand "rails g rename:app_to New-Name"
